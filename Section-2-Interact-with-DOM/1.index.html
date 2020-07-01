@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body class="bg-gray-300">
+    <div id="app">
+        <div class="h-screen flex items-center justify-center">
+            <div class="w-full max-w-md bg-white p-10">
+                <div class="text-4xl font-light capitalize mb-8 text-center">interact with dom</div>
+                <form>
+                    <!-- Menampilkan Data -->
+                    <p class="text-lg text-center mb-5 capitalize">{{ title }}</p>
+                    <!-- Menampilkan Method / Fungsi -->
+                    <p class="text-lg text-center mb-5 capitalize">{{ sayHello() }}</p>
+                    <!-- Menampilkan Data menggunakan Fungsi this.data_name -->
+                    <p class="text-lg text-center mb-5 capitalize">{{ tampilJudul() }}</p>
+                    <!-- Binding Menggunakan v-bind -->
+                    <p class="text-lg text-center mb-5 capitalize">
+                        <a class="text-blue-700 hover:text-blue-400 underline" v-bind:href="link" target="__blank">
+                            klik saya!
+                        </a>
+                    </p>
+                    <!-- Menggunakan v-once pada properties agar data tidak ikut diubah/dirender ulang pada fungsi -->
+                    <p class="text-lg text-center mb-1" v-once>Dengan v-once: <b>{{ rujak }}</b></p>
+                    <p class="text-lg text-center mb-1">Tanpa v-once: <b>{{ rujak }}</b></p>                    
+                    <p class="text-lg text-center mb-5">{{ gantiRujak() }}</p>
+                    <!-- Menampilkan Raw Html dari vue Data -->
+                    <p class="text-lg text-center mb-5" v-html="rawHtml"></p>
+                </form>
+            </div>
+        </div>
+    </div>    
+</body>
+
+<script>
+    new Vue({
+	    el: '#app',
+        data: { //Daftar VUE DATA
+            title: 'Hello World!',
+            link: 'http://google.com/',
+            rujak: 'Pedes',
+            rawHtml: '<a class="text-blue-700 hover:text-blue-400 underline" href="http://google.com/" target="__blank">Google</a>'
+        },
+        methods: {//DAFTAR METHOD ATAU FUNGSI
+            sayHello: function() {
+                return 'Hello!';
+            },
+            tampilJudul: function() {
+                return this.title;
+            },
+            gantiRujak: function() {
+                this.rujak = 'Gak Pedes!';
+                return this.rujak;
+            }
+        }
+    });
+</script>
+
+</html>

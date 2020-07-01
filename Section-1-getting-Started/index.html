@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body class="bg-gray-300">
+    <div id="app">
+        <div class="h-screen flex items-center justify-center">
+            <div class="w-full max-w-md bg-white p-10">
+                <div class="text-4xl font-light capitalize mb-8 text-center">getting started</div>
+                <form>
+                    <div class="mb-5">                        
+                        <label class="text-sm mb-2 block capitalize" for="input">change title</label>
+                        <input class="border p-3 rounded w-full" type="text" placeholder="Input here to change the title" v-on:input="changeTitle">
+                    </div>
+                    <p class="text-lg text-center mb-5 capitalize">title = "{{ title }}"</p>
+                </form>
+            </div>
+        </div>
+    </div>    
+</body>
+
+<script>
+    new Vue({
+	    el: '#app',
+        data: {
+            title: 'Hello World!'
+        },
+        methods: {
+            changeTitle: function(event) {
+                this.title = event.target.value;
+            }
+        }
+    });
+</script>
+
+</html>

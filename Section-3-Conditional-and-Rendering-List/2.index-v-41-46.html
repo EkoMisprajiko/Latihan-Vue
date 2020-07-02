@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body class="bg-gray-300">
+    <div id="app">
+        <div class="h-screen flex items-center justify-center">
+            <div class="w-full max-w-md bg-white p-10">
+                <div class="text-4xl font-light capitalize mb-8 text-center">interact with dom</div>
+                <form>
+                    <!-- V-FOR -->
+                    <ul class="list-decimal">
+                        <li v-for="ingridient in ingredients">{{ ingridient }} </li>
+                    </ul>
+                    <hr>
+                    
+                    <!-- V-FOR WITH index-->
+                    <ul class="list-decimal">
+                        <li v-for="(ingredient, i) in ingredients">{{ ingredient }} ({{ i }})</li>
+                    </ul>
+
+                    <!-- Alternative V-FOR -->
+                    <template v-for="(ingredient, index) in ingredients">
+                        <h1 class="text-2xl text-center">{{ ingredient }}</h1>
+                        <p class="text-lg text-center mb-5 capitalize">{{ index }}</p>
+                    </template>
+                    <hr>
+                    <!-- NESTED V-FOR -->
+                    <ul class="list-decimal">
+                        <li v-for="person in persons">
+                            <div v-for="(v, k, i) in person">{{ k }}: {{ v }} ({{ i }})</div>
+                        </li>
+                    </ul>
+                    <hr>
+                    <!-- V-FOR Numbers -->
+                    <ul class="list-disc">
+                        <li v-for="n in 10">{{ n }}</li>
+                    </ul>
+                    <hr>
+                    
+                    <!-- 
+                        Add list of item using .push, pastikan menambahkan :key="" agar vue js benar-benar
+                        menyimpan "data" nya, bukan hanya posisinya
+                    -->
+                    <ul class="list-decimal">
+                        <li v-for="(ingredient, i) in ingredients" :key="ingredient">{{ ingredient }} ({{ i }})</li>
+                    </ul>
+                    <p class="text-lg text-center mb-5 capitalize">
+                        <a href="#" @click="ingredients.push('spices')" class="py-2 px-4 rounded-full bg-blue-500 hover:bg-blue-400 text-white hover:text-black hover:font-bold focus:outline-none focus:shadow-outline">
+                            Add Spices!
+                        </a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>    
+</body>
+
+<script>
+    new Vue({
+	    el: '#app',
+        data: { //Daftar VUE DATA
+            ingredients: ['meat','fruit','cookies'],
+            persons:[
+                {name: 'Max', age:'27', color:'red'},
+                {name: 'Anna', age:'unknown', color:'blue'}
+            ]
+        }
+    });
+</script>
+
+</html>

@@ -25,6 +25,12 @@
                             klik saya!
                         </a>
                     </p>
+                    <!-- Mempersingkat v-bind dengan : -->
+                    <p class="text-lg text-center mb-5 capitalize">
+                        <a class="text-blue-700 hover:text-blue-400 underline" :href="link" target="__blank">
+                            klik saya!
+                        </a>
+                    </p>
                     <!-- Menggunakan v-once pada properties agar data tidak ikut diubah/dirender ulang pada fungsi -->
                     <p class="text-lg text-center mb-1" v-once>Dengan v-once: <b>{{ rujak }}</b></p>
                     <p class="text-lg text-center mb-1">Tanpa v-once: <b>{{ rujak }}</b></p>                    

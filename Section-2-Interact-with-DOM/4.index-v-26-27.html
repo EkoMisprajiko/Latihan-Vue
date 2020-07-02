@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body class="bg-gray-300">
+    <div id="app">
+        <div class="h-screen flex items-center justify-center">
+            <div class="w-full max-w-md bg-white p-10">
+                <div class="text-4xl font-light capitalize mb-8 text-center">interact with dom</div>
+                <form>
+                    <!-- Simple Way With Computed-->
+                    <p class="text-lg text-center mb-3 capitalize">
+                        <a href="#" v-on:click="counter++" class="py-2 px-4 rounded-full bg-blue-500 hover:bg-blue-400 text-white hover:text-black hover:font-bold focus:outline-none focus:shadow-outline">
+                            Increase!
+                        </a>
+                    </p>
+                    <p class="text-lg text-center mb-3 capitalize">
+                        <a href="#" v-on:click="counter--" class="py-2 px-4 rounded-full bg-blue-500 hover:bg-blue-400 text-white hover:text-black hover:font-bold focus:outline-none focus:shadow-outline">
+                            Decrease!
+                        </a>
+                    </p>
+                    <p class="text-lg text-center mb-5 capitalize">
+                        <a href="#" v-on:click="secondCounter++" class="py-2 px-4 rounded-full bg-blue-500 hover:bg-blue-400 text-white hover:text-black hover:font-bold focus:outline-none focus:shadow-outline">
+                            Increase-2nd!
+                        </a>
+                    </p>
+                    <p class="text-lg text-center mb-5 capitalize">
+                        {{ counter }} | {{ secondCounter }}
+                    </p>
+                    <!-- Prhatikan perbedaan menggunakan Method () dengan Computed not need ()-->
+                    <p class="text-lg text-center mb-5 capitalize">{{ result() }}</p>
+                    <p class="text-lg text-center mb-5 capitalize">{{  output  }}</p>
+                </form>
+            </div>
+        </div>
+    </div>    
+</body>
+
+<!--  
+    Known Option for Vue Instance
+    el: Connect to DOM
+    data: Store Data to be used
+    methods: Methods of the vue instance
+    computed: Dependent Properties
+    watch: Execute code upon data changes
+-->
+
+<script>
+    new Vue({
+	    el: '#app',
+        data: { //Daftar VUE DATA
+            counter: 0,
+            secondCounter: 0
+        },
+        // secondCounter tidak terdaftar pada computed maupun methods
+        // Namun, pada properties (Tag HTML a) dibuat v-on:click="secondCounter++"
+        // Jika dilihat di log maka v-on:click="secondCounter++" akan di anggap sebagai method.
+        computed: {
+            output: function() {
+                console.log('Computed');
+                return this.counter > 5 ? 'Greater 5' : 'Smaller than 5';
+            }
+        },
+        watch: {
+            counter: function(value) {
+                var vm = this;
+                setTimeout(function() {
+                    vm.counter = 0;
+                }, 2000);
+            }
+        },
+        methods: {//DAFTAR METHOD ATAU FUNGSI
+            result: function() {
+                console.log('Medthod');
+                return this.counter > 5 ? 'Greater 5' : 'Smaller than 5';
+            }
+        }
+    });
+</script>
+
+</html>

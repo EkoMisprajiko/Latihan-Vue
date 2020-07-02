@@ -13,16 +13,11 @@
             <div class="w-full max-w-md bg-white p-10">
                 <div class="text-4xl font-light capitalize mb-8 text-center">interact with dom</div>
                 <form>
-                    <!-- Menampilkan 1 Data dengan Fungsi-->
+                    <!-- Mengisi input name dengan Data / Two Way Binding-->
                     <p class="text-lg text-center mb-5 capitalize">
-                        <a href="#" v-on:click="increase" class="py-2 px-4 rounded-full bg-blue-500 hover:bg-blue-400 text-white hover:text-black hover:font-bold focus:outline-none focus:shadow-outline">
-                            Click Me!
-                        </a>
+                        <input class="bg-white focus:outline-none focus:border-blue-300 border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" type="text" placeholder="Your Name" v-model="editData">
                     </p>
-                    <p class="text-lg text-center mb-5 capitalize">{{ counter }}</p>
-                    
-                    <!-- Menampilkan 2 Data menggunakan Fungsi -->
-                    <p class="p-20 rounded-lg bg-gray-200 text-lg text-center mb-5 capitalize" v-on:mousemove="updateCoordinates">{{ x }} / {{ y }}</p>
+                    <p class="text-center mb-5">{{ editData }}</p>
                 </form>
             </div>
         </div>
@@ -33,18 +28,10 @@
     new Vue({
 	    el: '#app',
         data: { //Daftar VUE DATA
-            counter: 0,
-            x: 0,
-            y: 0
+            editData: "Ini adalah data yang bisa kamu edit"
         },
         methods: {//DAFTAR METHOD ATAU FUNGSI
-            increase: function() {
-                this.counter++;
-            },
-            updateCoordinates: function(event) {
-                this.x = event.clientX;
-                this.y = event.clientY;
-            }
+            
         }
     });
 </script>

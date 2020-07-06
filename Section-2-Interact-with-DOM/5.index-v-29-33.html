@@ -15,10 +15,37 @@
 
                 <div 
                     class="w-32 h-32 bg-gray-600 inline-block m-5" 
-                    @click="bgRed400 = !bgRed400" 
-                    :class="bgRed400"></div>
-                <div class="w-32 h-32 bg-gray-600 inline-block m-5"></div>
-                <div class="w-32 h-32 bg-gray-600 inline-block m-5"></div>
+                    @click="red = !red" 
+                    :class="divClases"></div>
+                <div 
+                    class="w-32 h-32 bg-gray-600 inline-block m-5" 
+                    :class="{'bg-red-600': red}"></div>
+                <div class="w-32 h-32 bg-gray-600 inline-block m-5" 
+                    :class="[color,{'bg-red-600': red}]"></div><hr class="m-5">
+                <input 
+                    class="shadow appearance-none border rounded 
+                    w-full py-2 px-3 text-gray-700 leading-tight 
+                    focus:outline-none focus:shadow-outline" 
+                    type="text" placeholder="Change Color" v-model="color"><hr class="m-5">
+
+                <!-- Using :style -->
+                <div class="w-32 h-32 bg-gray-600 inline-block m-5" 
+                    :style="{backgroundColor: color2}"></div>
+                <div class="w-32 h-32 bg-gray-600 inline-block m-5" 
+                    :style="myStyle"></div>
+                <div class="w-32 h-32 bg-gray-600 inline-block m-5" 
+                    :style="[myStyle, {height: width + 'px'}]"></div> <hr class="m-5">
+                
+                <input 
+                    class="shadow appearance-none border rounded 
+                    w-full py-2 px-3 text-gray-700 leading-tight 
+                    focus:outline-none focus:shadow-outline mb-5" 
+                    type="text" placeholder="Change Color" v-model="color2">
+                <input 
+                    class="shadow appearance-none border rounded 
+                    w-full py-2 px-3 text-gray-700 leading-tight 
+                    focus:outline-none focus:shadow-outline mb-5" 
+                    type="text" placeholder="Change Width" v-model="width">
             </div>
         </div>
     </div>    
@@ -37,7 +64,24 @@
     new Vue({
         el: '#app',
         data: {
-            bgRed400: 'bg-red-400',
+            red: true,
+            color: 'bg-green-600',
+            color2: '#FFFF00',
+            width: 30
+        },
+        computed: {
+            divClases: function() {
+                return {
+                    'bg-red-600' : this.red,
+                    'bg-blue-600' : !this.red
+                }
+            },
+            myStyle: function() {
+                return {
+                    backgroundColor : this.color2,
+                    width : this.width + 'px'
+                }
+            }
         }
         
     });

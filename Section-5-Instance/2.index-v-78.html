@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-300">
+    <div class="h-screen flex items-center justify-center">
+        <div class="w-full max-w-md bg-white p-10">
+            <div class="text-4xl font-light font-bold capitalize mb-8 text-center">
+                Understanding the VueJS Instance
+            </div>
+            <div id="app">
+                <!-- Try using ref in tag "<h1>" bottom -->
+                <h1 ref="heading" class="text-2xl text-center mb-5">{{ title }}</h1>
+                <p class="text-lg text-center mb-5 capitalize">{{ inspect }}</p>
+                <p class="text-lg text-center mb-5 capitalize">
+                    <a href="#" @click="title= 'Updated'" class="py-2 px-4 rounded-full bg-blue-500 hover:bg-blue-400 text-white hover:text-black hover:font-bold focus:outline-none focus:shadow-outline">
+                        Update Title
+                    </a>
+                </p>
+                <p class="text-lg text-center mb-5 capitalize">
+                    <a href="#" @click="destroy" class="py-2 px-4 rounded-full bg-blue-500 hover:bg-blue-400 text-white hover:text-black hover:font-bold focus:outline-none focus:shadow-outline">
+                        Destroy
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>    
+</body>
+
+<script src="../assets/js/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            title: 'The Vue JS Instance Lifecycle',
+            inspect: 'Inspect Element --> Console'
+        },
+        beforeCrate: function() {
+            console.log('beforeCreate()');
+        },
+        created: function() {
+            console.log('created()');
+        },
+        beforeMount: function() {
+            console.log('beforeMount()');
+        },
+        mounted: function() {
+            console.log('mounted()');
+        },
+        beforeUpdate: function() {
+            console.log('beforeUpdate()');
+        },
+        updated: function() {
+            console.log('updated()');
+        },
+        beforeDestroy: function() {
+            console.log('beforeDestroy()');
+        },
+        destroyed: function() {
+            console.log('destroyed()');
+        },
+        methods: {
+            destroy: function() {
+               this.$destroy(); 
+            }
+        }
+    })
+</script>
+</html>

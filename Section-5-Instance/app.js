@@ -38,7 +38,7 @@ vm1.$mount('#app');
 
 console.log(vm1.$data === data);
 
-// Mengakses $refs (html ref property) dari luar instance
+// Mengakses $refs (html ref atrribut) dari luar instance
 vm1.$refs.heading.innerText = "Refs";
 
 setTimeout(function() {
@@ -61,10 +61,28 @@ var vm2 = new Vue({
   }
 });
 
+// Vue instance ke-3
+var vm3 = new Vue({
+  template: '<h1 class="text-2xl font-bold text-center mb-5">Hello VM3!</h1>'
+});
+
+vm3.$mount();
+document.getElementById('app3').appendChild(vm3.$el);
+
+Vue.component('helo', {
+  template: '<h1 class="text-2xl font-bold text-center">Hello VM3!</h1>'
+})
+
+// Vue instance ke-4
+var vm3 = new Vue({
+  el: '#app4'
+});
+
+
 
 //PROBLEM TIDAK SEPERTI YANG DI VIDEO TUTORIAL KE 71 Maximillian: 
 // Ketika title sudah diubah menggunakan $refs pada baris 40: vm1.$refs.heading.innerText = "Refs";
 // Title "TIDAK BISA" diubah menggunakan methods "change" pada Vue instance ke 2
 // yaitu: vm1.title = 'Changed from vm2 methods!';
 // Kodenya harus diganti menjadi: vm1.$refs.heading.innerText = 'Changed from vm2 methods!';
-// Begitupun method "show" dan "setTimeout" semuanya harus menggunkan method "$refs"
+// Begitupun method "show" dan "setTimeout" semuanya harus menggunkan "$refs"

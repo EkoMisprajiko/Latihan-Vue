@@ -1,21 +1,22 @@
 <template>
   <div id="app" class="antialiased text-gray-900 flex flex-col min-h-screen bg-gray-200">
+    <!-- Show Home -->
     <router-view class="flex-1" />
+
+    <!-- Show Footer -->
     <div class="flex-shrink-0 py-12 text-center">
       <div>
-        <router-link class="font-semibold text-gray-700
-                hover:underline"
-		to="/dropdown">Dropdown</router-link>
+        <router-link class="font-semibold text-gray-700 hover:underline" to="/dropdown">Dropdown</router-link>
         <span class="mx-4 text-gray-500">|</span>
-        <router-link class="font-semibold text-gray-700
-		hover:underline"
-		to="/modal">Modal</router-link>
+        <router-link class="font-semibold text-gray-700 hover:underline" to="/modal">Modal</router-link>
+        <span class="mx-4 text-gray-500">|</span>
+        <router-link class="font-semibold text-gray-700 hover:underline" to="/modal2">Modal 2</router-link>
+        <span class="mx-4 text-gray-500">|</span>
+        <router-link class="font-semibold text-gray-700 hover:underline" to="/drag-and-drop">Upload</router-link>
       </div>
       <div class="mt-2">
-        <a
-          href="https://github.com/adamwathan/vue-tailwind-examples"
-          class="text-sm font-semibold text-gray-600 hover:underline"
-        >Source on GitHub</a>
+        <a href="https://github.com/adamwathan/vue-tailwind-examples"
+          class="text-sm font-semibold text-gray-600 hover:underline">Source on GitHub</a>
       </div>
     </div>
     <portal-target name="modals"></portal-target>

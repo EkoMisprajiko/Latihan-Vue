@@ -50,7 +50,8 @@
     },
     "rules": {
       "no-tabs": 0,
-      "max-len": "off"
+      "max-len": "off",
+      "prefer-destructuring": ["error", {"object": true, "array": false}]
     }
   },
   "browserslist": [
